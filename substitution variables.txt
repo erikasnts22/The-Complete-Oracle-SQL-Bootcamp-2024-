@@ -1,0 +1,80 @@
+SELECT employee_id,first_name,last_name,department_id
+FROM employees
+WHERE department_id = &department_no;
+
+SELECT employee_id,first_name,last_name,department_id
+FROM employees
+WHERE first_name = '&name';
+
+SELECT employee_id,first_name,last_name,department_id
+FROM employees
+WHERE first_name = &name;
+
+SELECT employee_id,first_name,last_name,&column_name
+FROM &table_name
+WHERE &condition
+ORDER BY &order_by_clause;
+
+SELECT &column_name
+FROM &table_name
+WHERE &condition
+ORDER BY &order_by_clause;
+
+SELECT employee_id,first_name,last_name,salary
+FROM employees
+WHERE salary BETWEEN &sal AND &sal + 1000;
+
+SELECT employee_id,first_name,last_name,salary
+FROM employees
+WHERE salary BETWEEN &&sal AND &sal + 1000;
+
+SELECT employee_id,first_name,last_name,&&column_name
+FROM employees
+ORDER BY &column_name;
+
+SELECT &&column_name
+FROM employees
+GROUP BY &column_name
+ORDER BY &column_name;
+
+DEFINE emp_num = 200;
+DEFINE column_name = 'first_name';
+UNDEFINE emp_num;
+DEFINE;
+DEFINE emp_num;
+DEF column_name;
+UNDEF column_name;
+
+SELECT *
+FROM employees
+WHERE employee_id = &emp_num;
+
+SELECT * FROM employees;
+
+ACCEPT emp_id PROMPT 'Please enter an Employee ID:';
+SELECT employee_id,first_name,last_name,salary
+FROM employees
+WHERE employee_id = &emp_id;
+
+UNDEF emp_id;
+
+ACCEPT min_salary PROMPT 'Please specify the MINIMUM salary';
+ACCEPT max_salary PROMPT 'Please specify the MAXIMUM salary';
+SELECT employee_id,last_name,first_name,salary
+FROM employees
+WHERE salary BETWEEN &min_salary AND &max_salary;
+UNDEF min_salary;
+UNDE max_salary;
+
+SET VERIFY OFF;
+SELECT employee_id,first_name,last_name
+FROM employees
+WHERE employee_id = &emp_id;
+
+SET DEFINE OFF;
+
+SELECT *
+FROM departments 
+WHERE department_name = 'R&D';
+
+SET DEF ON;

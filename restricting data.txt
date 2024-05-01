@@ -1,0 +1,53 @@
+SELECT * FROM employees;
+SELECT * FROM employees WHERE salary > 10000;
+SELECT * FROM employees WHERE job_id = 'IT_PROG';
+SELECT employee_id,first_name,last_name FROM employees WHERE job_id = 'SA_MAN';
+SELECT * FROM employees WHERE hire_date > '01-JAN-00';
+SELECT * FROM employees WHERE hire_date = '06-FEB-00';
+SELECT * FROM employees WHERE manager_id = 100;
+SELECT first_name,last_name,salary FROM employees WHERE salary BETWEEN 10000 AND 12000;
+
+SELECT employee_id,first_name,last_name,salary,manager_id
+FROM employees
+WHERE employee_id IN (100, 105, 102, 200, 101);
+
+SELECT employee_id,first_name,last_name,job_id
+FROM employees
+WHERE job_id IN ('SA_MAN', 'SA_REP');
+
+SELECT * FROM employees WHERE job_id LIKE 'SA_REP';
+
+SELECT * FROM employees;
+SELECT * FROM employees WHERE first_name LIKE 'A%';
+SELECT employee_id,first_name,last_name,job_id FROM employees WHERE job_id LIKE '%MAN';
+
+SELECT first_name,last_name,manager_id
+FROM employees
+WHERE manager_id IS NOT NULL;
+
+SELECT * FROM employees WHERE job_id = 'SA_REP' OR salary > 10000;
+
+SELECT * FROM employees WHERE job_id NOT IN ('SA_MAN', 'SA_REP');
+
+SELECT employee_id,first_name,last_name,salary 
+FROM employees 
+WHERE job_id 
+LIKE '%MAN' 
+AND salary < 10000;
+
+SELECT first_name,last_name,job_id,salary 
+FROM employees 
+WHERE (job_id = 'IT_PROG'
+OR job_id = 'ST_CLERK')
+AND salary > 5000;
+
+SELECT first_name,last_name,department_id,salary
+FROM employees
+WHERE salary > 10000
+AND (department_id = 20
+OR department_id = 30);
+
+SELECT employee_id,department_id,job_id,salary
+FROM employees
+WHERE department_id = 50 OR (job_id = 'SA_REP'
+AND salary BETWEEN 5000 and 10000);

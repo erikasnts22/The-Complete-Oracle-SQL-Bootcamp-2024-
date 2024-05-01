@@ -1,0 +1,92 @@
+SELECT first_name,last_name,salary FROM employees ORDER BY salary;
+
+SELECT first_name,last_name,salary, (10*(salary/5)+3000) - 100 as NEW_SALARY
+FROM employees
+ORDER BY NEW_SALARY;
+
+SELECT first_name,last_name,salary, (10*(salary/5)+3000) - 100 as NEW_SALARY
+FROM employees
+ORDER BY 3;
+
+SELECT *
+FROM employees 
+ORDER BY 2;
+
+SELECT *
+FROM employees
+ORDER BY first_name,job_id,salary;
+
+
+SELECT employee_id,first_name,last_name,salary 
+FROM employees 
+ORDER BY first_name;
+
+SELECT employee_id,first_name,last_name,salary 
+FROM employees 
+ORDER BY first_name DESC, last_name DESC;
+
+SELECT employee_id,first_name,last_name,salary AS FROM employees ORDER BY s;
+
+SELECT employee_id,first_name,last_name,salary AS s FROM employees ORDER BY s;
+
+SELECT employee_id,first_name,last_name,salary AS s FROM employees ORDER BY 4 DESC;
+
+SELECT first_name,salary,commission_pct 
+FROM employees 
+ORDER BY commission_pct;
+
+SELECT employee_id,department_id,salary 
+FROM employees 
+ORDER BY department_id, salary DESC;
+
+SELECT first_name,last_name,commission_pct c
+FROM employees
+ORDER BY 1 DESC NULLS LAST,
+last_name ASC, c NULLS FIRST;
+
+SELECT first_name,salary,commission_pct
+FROM employees
+ORDER BY commission_pct DESC NULLS LAST;
+
+SELECT * FROM employees;
+
+SELECT employee_id,first_name,last_name,salary,ROWNUM,ROWID FROM employees;
+
+SELECT first_name FROM employees WHERE ROWID = 'AAATiDAAMAAALKzAAA';
+
+SELECT employee_id,first_name,last_name,salary,ROWNUM,ROWID FROM
+    (SELECT employee_id,first_name,last_name,salary,ROWID
+        FROM employees
+        WHERE department_id = 80
+        ORDER BY salary DESC)
+WHERE ROWNUM <= 5; 
+
+SELECT first_name,last_name,salary
+FROM employees
+ORDER BY salary DESC
+OFFSET 1 ROW FETCH NEXT 10 ROWS ONLY;
+
+SELECT first_name,last_name,salary
+FROM employees
+OFFSET 1 ROW FETCH FIRST 10 ROWS WITH TIES;
+
+SELECT first_name,last_name,salary
+FROM employees
+FETCH NEXT 10 ROWS WITH TIES;
+
+SELECT first_name,last_name,salary
+FROM employees
+OFFSET 1 ROW;
+
+SELECT first_name,last_name,salary
+FROM employees
+OFFSET null ROW FETCH NEXT null ROWS ONLY;
+
+SELECT * FROM orders;
+
+SELECT * FROM orders ORDER BY order_total DESC;
+
+SELECT order_id,order_total,customer_id
+FROM orders
+ORDER BY order_total DESC
+OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;

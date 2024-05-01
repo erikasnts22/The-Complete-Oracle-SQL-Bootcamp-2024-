@@ -1,17 +1,31 @@
 SELECT * FROM dual;
+
 SELECT 'My name is Erika' as output from dual;
+
 SELECT q'[My name is Erika]' as "Quote Operator" from dual;
+
 SELECT q'*I'm using quote operator in SQL statements*' as output from dual;
 
 SELECT DISTINCT JOB_ID FROM employees;
+
 SELECT unique first_name FROM employees;
+
 SELECt 'My name is ' || first_name FROM employees;
+
 SELECT first_name || ' ' || last_name from employees;
+
 SELECT * FROM employees;
+
 SELECT 'The commission percentage is ' || commission_pct,commission_pct FROM employees;
+
 SELECT * FROM locations;
+
 SELECT street_address || ', ' || city || ' ' || state_province || ', ' || postal_code || ', ' || country_id AS "Full Address" FROM locations;
+
 SELECT employee_id, salary, (salary+100)*12 as annual_salary FROM employees;
+
 SELECT sysdate - 1 FROM dual;
+
 SELECT salary, salary*0, commission_pct FROM employees;
+
 SELECT employee_id, salary, salary+((salary*0.20)+1000) AS new_salary FROM employees;

@@ -1,0 +1,133 @@
+/***************************************************************
+ * Lecture : Case Conversion (LOWER, UPPER, INITCAP) Functios  *
+ ***************************************************************/
+
+SELECT LOWER(first_name), UPPER(last_name), INITCAP(job_id)
+FROM employees
+WHERE job_id = 'IT_PROG';
+
+SELECT *
+FROM employees
+WHERE LOWER(last_name) = 'king';
+
+SELECT *
+FROM employees
+WHERE UPPER(last_name) = 'KING';
+
+SELECT *
+FROM employees
+WHERE INITCAP(last_name) = 'King';
+
+
+
+/***************************************************************
+*      Character Manipulation Functions (INSTR Function)       *
+****************************************************************/
+
+SELECT *
+FROM employees;
+
+SELECT first_name, SUBSTR(first_name, 3, 6), SUBSTR(first_name, 3), last_name, LENGTH(last_name)
+FROM employees;
+
+SELECT CONCAT(first_name, last_name)
+FROM employees;
+
+SELECT CONCAT(CONCAT(first_name, last_name), employee_id)
+FROM employees;
+
+SELECT first_name || last_name || employee_id
+FROM employees;
+
+SELECT INSTR('I am learning how to use functions in Oracle', 'o',1, 3)
+FROM dual;
+
+SELECT INSTR('I am learning how to use functions in Oracle', 'o',-1, 1)
+FROM dual;
+
+SELECT INSTR('I am learning how to use functions in Oracle', 'in',-1, 1)
+FROM dual;
+
+SELECT INSTR('I am learning how to use functions in Oracle', 'in',1, 1)
+FROM dual;
+
+SELECT first_name, INSTR(first_name,'a')
+FROM employees;
+
+
+
+/***************************************************************
+*	Character Functions (TRIM, LTRIM, RTRIM Functions)     *
+****************************************************************/
+
+SELECT TRIM('   My Name is Adam   ') trimmed_text
+FROM dual;
+
+SELECT TRIM(BOTH ' ' FROM '   My Name is Adam   ') trimmed_text
+FROM dual;
+
+SELECT TRIM(LEADING ' ' FROM '   My Name is Adam   ') trimmed_text
+FROM dual;
+
+SELECT TRIM(TRAILING ' ' FROM '   My Name is Adam   ') trimmed_text
+FROM dual;
+
+SELECT TRIM(TRAILING 'm' FROM 'my Name is Adam') trimmed_text
+FROM dual;
+
+SELECT TRIM(LEADING 'm' FROM 'my Name is Adam') trimmed_text
+FROM dual;
+
+SELECT TRIM(BOTH 'm' FROM 'my Name is Adam') trimmed_text
+FROM dual;
+
+SELECT TRIM('m' FROM 'my Name is Adam') trimmed_text
+FROM dual;
+
+SELECT RTRIM('   My Name is Adam   ') r_trimmed_text
+FROM dual;
+
+SELECT LTRIM('   My Name is Adam   ') l_trimmed_text
+FROM dual;
+
+SELECT LTRIM('my Name is Adam', 'my') l_trimmed_text
+FROM dual;
+
+SELECT RTRIM('my Name is Adam', 'Adam') r_trimmed_text
+FROM dual;
+
+SELECT LTRIM('www.yourwebsitename.com', 'w.') l_trimmed_text
+FROM dual;
+
+SELECT RTRIM('www.yourwebsitename.com', '.com') r_trimmed_text
+FROM dual;
+
+SELECT RTRIM(LTRIM('www.yourwebsitename.com', 'w.'),'.com')  nested_trimmed_text
+FROM dual;
+
+SELECT LTRIM('123456789321www.yourwebsitename.com', '123456789') l_trimmed_text
+FROM dual;
+
+
+
+/***************************************************************
+*     Character Functions (REPLACE, LPAD, RPAD Functions)      *
+****************************************************************/
+
+SELECT first_name, REPLACE(first_name,'a') replaced_output
+FROM employees;
+
+SELECT first_name, REPLACE(first_name,'le','-') replaced_output
+FROM employees;
+
+SELECT first_name, LPAD(first_name,10,'*') pad
+FROM employees;
+
+SELECT first_name, RPAD(first_name,10,'*') pad
+FROM employees;
+
+SELECT first_name, LPAD('My name is ',20,'-') pad
+FROM employees;
+
+SELECT first_name, LPAD('My name is ' || last_name,20,'-') pad
+FROM employees;

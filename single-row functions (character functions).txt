@@ -131,3 +131,58 @@ FROM employees;
 
 SELECT first_name, LPAD('My name is ' || last_name,20,'-') pad
 FROM employees;
+
+/************************************************************
+*     Numeric Functions (ROUND, TRUNC, CEIL, FLOOR, MOD)    *
+************************************************************/
+
+SELECT ROUND(12.136,2)
+FROM dual;
+
+SELECT TRUNC(15.79,1)
+FROM dual;
+
+SELECT CEIL(2.67)
+FROM dual;
+
+SELECT FLOOR(2.67)
+FROM dual;
+
+SELECT MOD(8,5)
+FROM dual;
+
+
+
+/************************************************************
+                  *     Nested Functions    *
+************************************************************/
+
+SELECT first_name,last_name,LPAD(UPPER(CONCAT(first_name,last_name)),20,'*')
+AS NESTED_FUNCTIONS
+FROM employees;
+
+SELECT INSTR('John Smith', ' ')+1 output
+FROM dual;
+
+SELECT SUBSTR('John Smith',INSTR('John Smith', ' ')+1,LENGTH('John Smith')) output
+FROM dual;
+
+SELECT SUBSTR('John Smith',INSTR('John Smith', ' ')+1) output
+FROM dual;
+
+SELECT SUBSTR('John Smith',6)
+FROM dual;
+
+SELECT SUBSTR(first_name|| ' ' ||last_name,
+INSTR(first_name|| ' ' ||last_name,' ')+1) output
+FROM employees;
+
+SELECT first_name|| ' ' ||last_name full_name,
+SUBSTR(first_name|| ' ' ||last_name,
+INSTR(first_name|| ' ' ||last_name,' ')+1) output
+FROM employees;
+
+SELECT first_name|| ' ' ||last_name full_name,
+SUBSTR(CONCAT(CONCAT(first_name,' '),last_name),
+INSTR(first_name|| ' ' ||last_name,' ')+1) output
+FROM employees;

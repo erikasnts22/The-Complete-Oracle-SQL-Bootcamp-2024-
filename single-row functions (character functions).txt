@@ -186,3 +186,84 @@ SELECT first_name|| ' ' ||last_name full_name,
 SUBSTR(CONCAT(CONCAT(first_name,' '),last_name),
 INSTR(first_name|| ' ' ||last_name,' ')+1) output
 FROM employees;
+
+
+
+/************************************************************
+        *     Date Manipulation Functions in SQL    *
+************************************************************/
+
+SELECT CURRENT_DATE,
+CURRENT_TIMESTAMP,
+SESSIONTIMEZONE,
+SYSTIMESTAMP,
+SYSDATE
+FROM DUAL;
+
+SELECT sysdate, CURRENT_DATE FROM DUAL;
+
+SELECT sysdate, sysdate + 1
+FROM DUAL;
+
+SELECT sysdate, sysdate + 1/24
+FROM DUAL;
+
+SELECT sysdate, sysdate + 1/(24*60)
+FROM DUAL;
+
+SELECT employee_id,
+hire_date,
+sysdate,
+TRUNC(sysdate - hire_date) AS worked_in_days
+FROM employees;
+
+SELECT first_name,
+last_name,
+(sysdate - hire_date)/365 AS working_period
+FROM employees;
+
+SELECT employee_id,
+hire_date,
+sysdate,
+TRUNC((sysdate - hire_date)/365) AS worked_in_years
+FROM employees
+ORDER BY worked_in_years;
+
+SELECT sysdate,
+ADD_MONTHS(sysdate,2)
+FROM DUAL;
+
+SELECT sysdate,
+ADD_MONTHS(sysdate,-2)
+FROM DUAL;
+
+SELECT sysdate,
+ADD_MONTHS(sysdate,30)
+FROM DUAL;
+
+SELECT sysdate,
+ADD_MONTHS('29/MAY/24',4)
+FROM DUAL;
+
+SELECT sysdate,
+ADD_MONTHS('29MAY24',4)
+FROM DUAL;
+
+SELECT employee_id,hire_date,
+TRUNC(hire_date,'MONTH') AS truncated_result,
+ROUND(hire_date,'MONTH') AS rounded_result
+FROM employees;
+
+SELECT employee_id,hire_date,
+TRUNC(hire_date,'YEAR') AS truncated_result,
+ROUND(hire_date,'YEAR') AS rounded_result
+FROM employees;
+
+SELECT EXTRACT(year from sysdate) AS extracted_result
+FROM DUAL;
+
+SELECT EXTRACT(month from sysdate) AS extracted_result
+FROM DUAL;
+
+SELECT EXTRACT(day from sysdate) AS extracted_result
+FROM DUAL;

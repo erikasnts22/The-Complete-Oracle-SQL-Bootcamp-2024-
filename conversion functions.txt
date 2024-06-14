@@ -1,5 +1,5 @@
 /***************************************************************
- * 	 		Conversion Functions     		*
+* 	 		              Conversion Functions     		              *
  ***************************************************************/
 
 -- Implicit conversion from a VARCHAR2 value to a NUMBER value
@@ -93,4 +93,19 @@ FROM employees;
 SELECT first_name, hire_date,
 TO_CHAR(hire_date, 'DDTHSP') AS "Formatted Date"
 FROM employees;
+
+SELECT TO_CHAR(salary, '$99,999.99') AS "Formatted Salary", salary
+FROM employees;
+
+SELECT salary, salary * commission_pct * 100,
+TO_CHAR(salary * commission_pct * 100, '$999,999.00') AS "Formatted Salary"
+FROM employees
+WHERE commission_pct IS NOT NULL;
+
+SELECT TO_NUMBER('$6,152.21', '$99,999.99') AS "Formatted Number"
+FROM DUAL;
+
+SELECT first_name, last_name, TO_CHAR(hire_date, 'DDSPTH Month YYYY') AS "Hire Date"
+FROM employees
+WHERE hire_date > TO_DATE('Jun 12, 2000','Mon DD, YYYY');
 

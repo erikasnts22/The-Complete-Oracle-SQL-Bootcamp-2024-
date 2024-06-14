@@ -1,5 +1,5 @@
 /***************************************************************
-* 	 		          Conversion Functions     		              *
+ * 	 		Conversion Functions     		*
  ***************************************************************/
 
 -- Implicit conversion from a VARCHAR2 value to a NUMBER value

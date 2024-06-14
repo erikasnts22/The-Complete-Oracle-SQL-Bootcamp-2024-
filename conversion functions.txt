@@ -109,3 +109,31 @@ SELECT first_name, last_name, TO_CHAR(hire_date, 'DDSPTH Month YYYY') AS "Hire D
 FROM employees
 WHERE hire_date > TO_DATE('Jun 12, 2000','Mon DD, YYYY');
 
+SELECT job_id, first_name, last_name, commission_pct, NVL(commission_pct,0) AS "NVL_comm_pct"
+FROM employees
+WHERE job_id IN('SA_REP', 'IT_PROG');
+
+SELECT employee_id, salary, commission_pct, salary + salary * NVL(commission_pct,0) AS "NVL_new_salary"
+FROM employees;
+
+SELECT job_id, first_name, last_name, commission_pct, NVL2(commission_pct, 'has', 'has not') NVL2_example
+FROM employees WHERE job_id IN('SA_REP','IT_PROG') 
+ORDER BY commission_pct NULLS LAST;
+
+SELECT first_name, last_name,
+LENGTH(first_name) AS LEN1, LENGTH(last_name) AS LEN2,
+NULLIF(LENGTH(first_name), LENGTH(last_name)) AS "Result"
+FROM employees;
+
+SELECT first_name, last_name,
+LENGTH(first_name) AS LEN1, LENGTH(last_name) AS LEN2,
+NULLIF(LENGTH(first_name), LENGTH(last_name)) AS "Result"
+FROM employees
+WHERE NULLIF(LENGTH(first_name), LENGTH(last_name)) IS NULL;
+
+SELECT COALESCE(null, null, null, 1, 2, 3, null) FROM DUAL;
+
+SELECT COALESCE(null, null, null, null) FROM DUAL;
+
+SELECT state_province, city, COALESCE(state_province, city)
+FROM locations;

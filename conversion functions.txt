@@ -109,6 +109,11 @@ SELECT first_name, last_name, TO_CHAR(hire_date, 'DDSPTH Month YYYY') AS "Hire D
 FROM employees
 WHERE hire_date > TO_DATE('Jun 12, 2000','Mon DD, YYYY');
 
+
+/***************************************************************
+ * 	Null-Related (NVL, NVL2, NULLIF, COALESCE) Functions    *
+ ***************************************************************/
+
 SELECT job_id, first_name, last_name, commission_pct, NVL(commission_pct,0) AS "NVL_comm_pct"
 FROM employees
 WHERE job_id IN('SA_REP', 'IT_PROG');

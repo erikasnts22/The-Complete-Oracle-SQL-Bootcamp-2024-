@@ -1,0 +1,55 @@
+/***************************************************************
+ * 	 		Group Functions     			*
+ ***************************************************************/
+
+
+SELECT AVG(salary), AVG(ALL salary), AVG(DISTINCT salary) FROM employees;
+
+SELECT AVG(salary), AVG(ALL salary), AVG(DISTINCT salary) FROM employees WHERE job_id = 'IT_PROG';
+
+SELECT AVG(commission_pct), AVG(NVL(commission_pct,0)) FROM employees;
+
+
+
+SELECT COUNT(*), COUNT(manager_id), COUNT(ALL manager_id), COUNT(DISTINCT manager_id) FROM employees;
+
+SELECT COUNT(*), COUNT(commission_pct), COUNT(DISTINCT commission_pct), COUNT(NVL(commission_pct,0)), COUNT(DISTINCT NVL(commission_pct,0)) FROM employees;
+
+SELECT COUNT(*) AS num_married_men FROM OE.customers WHERE marital_status = 'married' AND gender = 'M';
+
+SELECT COUNT(*) FROM OE.customers WHERE marital_status = 'married' AND gender = 'M';
+
+
+
+SELECT MAX(salary), MAX(hire_date), MAX(first_name) FROM employees;
+
+
+SELECT MIN(salary), MIN(commission_pct), MIN(NVL(commission_pct,0)), MIN(hire_date), MIN(first_name) FROM employees;
+
+
+SELECT SUM(salary), SUM(ALL salary), SUM(DISTINCT salary) FROM employees;
+
+
+SELECT LISTAGG(first_name, ',') WITHIN GROUP (ORDER BY last_name DESC) AS "Employees" FROM employees
+WHERE job_id = 'ST_CLERK';
+
+SELECT LISTAGG(DISTINCT salary, ',') WITHIN GROUP (ORDER BY salary DESC) AS "Salary" 
+FROM employees
+WHERE job_id = 'ST_CLERK';
+
+SELECT * FROM locations;
+
+SELECT LISTAGG(city, ',') WITHIN GROUP (ORDER BY city) AS Cities
+FROM locations
+WHERE country_id = 'US';
+
+SELECT LISTAGG(city, ',') AS Cities
+FROM locations
+WHERE country_id = 'US';
+
+
+SELECT MIN(salary), MAX(hire_date), AVG(salary), COUNT(*),
+LISTAGG(DISTINCT job_id, ' , ') WITHIN GROUP (ORDER BY job_id DESC)
+FROM employees;
+
+
